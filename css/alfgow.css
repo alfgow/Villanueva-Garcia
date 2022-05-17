@@ -20,3 +20,7 @@ body {
 	border-radius: 40%;
 	border: 1px solid var(--alfgow);
 }
+
+.header {
+	border-bottom: 1px solid lightgray;
+}
