@@ -4,13 +4,16 @@ let random;
 const fotos = 6;
 hero.style.backgroundImage = `url(./img/${number}.jpg)`;
 
-aleatorio();
+aleatorio(fotos, 1);
 
-function aleatorio() {
+function aleatorio(max, min) {
 	setInterval(() => {
-		random = Math.round(Math.random() * (6 - 1) + 1);
+		random = Math.round(Math.random() * (max - min) + min);
 		if (number === random) {
 			number = number - 1;
+			if (number < 1) {
+				number = number + 1;
+			}
 		} else {
 			number = random;
 		}
