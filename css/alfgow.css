@@ -1,0 +1,22 @@
+:root {
+	--alfgow: #d2ff1e;
+}
+
+body {
+	background-color: #c2c2c281;
+}
+
+.area {
+	border: 1px solid red;
+}
+
+.logo {
+	border: 1px solid var(--alfgow);
+	border-radius: 20%;
+	max-height: 200px;
+}
+
+.menuMovil {
+	border-radius: 40%;
+	border: 1px solid var(--alfgow);
+}
