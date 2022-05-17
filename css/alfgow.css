@@ -2,6 +2,10 @@
 	--alfgow: #d2ff1e;
 }
 
+html {
+	font-size: 62.5%;
+}
+
 body {
 	background-color: #c2c2c281;
 }
@@ -30,7 +34,30 @@ body {
 
 .hero {
 	background-image: url("../img/1.jpg");
-	height: 25rem;
+	height: 20rem;
 	background-size: cover;
 	background-position: center center;
+}
+
+@media (min-width: 768px) {
+	h1 {
+		font-size: 5rem;
+	}
+	h2 {
+		font-size: 4rem;
+	}
+	h3 {
+		font-size: 3rem;
+	}
+	.hero {
+		background-image: url("../img/1.jpg");
+		height: 35rem;
+		background-size: cover;
+		background-position: center center;
+	}
+	.producto img {
+		height: 43rem;
+		width: 100%;
+		object-fit: cover;
+	}
 }
