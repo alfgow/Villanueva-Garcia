@@ -8,6 +8,9 @@ html {
 
 body {
 	background-color: #c2c2c281;
+	font-family: "Raleway", sans-serif;
+	font-size: 1.6rem;
+	line-height: 2;
 }
 
 .area {
@@ -33,7 +36,6 @@ body {
 }
 
 .hero {
-	background-image: url("../img/1.jpg");
 	height: 20rem;
 	background-size: cover;
 	background-position: center center;
