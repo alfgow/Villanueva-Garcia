@@ -43,6 +43,19 @@ body {
 	background-position: center center;
 }
 
+.propiedadDestacada {
+}
+
+.propiedadDestacada img {
+	transition-property: transform;
+	transition-duration: 300ms;
+	border-radius: 15px;
+}
+
+.propiedadDestacada img:hover {
+	transform: scale(1.2);
+}
+
 @media (min-width: 960px) {
 	h1 {
 		font-size: 5rem;
@@ -55,7 +68,7 @@ body {
 	}
 	.hero {
 		background-image: url("../img/1.jpg");
-		height: 4\0rem;
+		height: 40rem;
 		background-size: cover;
 		background-position: center center;
 	}
