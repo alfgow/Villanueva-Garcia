@@ -17,5 +17,4 @@ function aleatorio(max, min) {
 		number = random;
 	}
 	hero.style.backgroundImage = `url(./img/${number}.jpg)`;
-	console.log(number);
 }
