@@ -7,17 +7,15 @@ hero.style.backgroundImage = `url(./img/${number}.jpg)`;
 aleatorio(fotos, 1);
 
 function aleatorio(max, min) {
-	setInterval(() => {
-		random = Math.round(Math.random() * (max - min) + min);
-		if (number === random) {
-			number = number - 1;
-			if (number < 1) {
-				number = number + 1;
-			}
-		} else {
-			number = random;
+	random = Math.round(Math.random() * (max - min) + min);
+	if (number === random) {
+		number = number - 1;
+		if (number < 1) {
+			number = number + 1;
 		}
-		hero.style.backgroundImage = `url(./img/${number}.jpg)`;
-		console.log(number);
-	}, 3000);
+	} else {
+		number = random;
+	}
+	hero.style.backgroundImage = `url(./img/${number}.jpg)`;
+	console.log(number);
 }
