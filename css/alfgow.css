@@ -9,7 +9,7 @@ html {
 }
 
 body {
-	background-color: #c2c2c281;
+	background-color: #9a9a9a81;
 	font-family: "Raleway", sans-serif;
 	font-size: 1.6rem;
 	line-height: 2;
@@ -54,6 +54,10 @@ body {
 
 .propiedadDestacada img:hover {
 	transform: scale(1.2);
+}
+
+.flecha {
+	color: var(--alfgow) !important;
 }
 
 @media (min-width: 960px) {
