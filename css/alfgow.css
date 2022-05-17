@@ -11,8 +11,10 @@ body {
 }
 
 .logo {
-	border: 1px solid var(--alfgow);
-	border-radius: 50%;
+	/* border: 1px solid var(--alfgow); */
+	border-radius: 50px;
+	background: #e0e0e0;
+	box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff;
 	max-height: 200px;
 }
 
