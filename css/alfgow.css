@@ -43,7 +43,9 @@ body {
 	background-position: center center;
 }
 
-.propiedadDestacada span {
+.logoNosotros {
+	max-height: 200px;
+	border-radius: 40px;
 }
 
 .propiedadDestacada img {
