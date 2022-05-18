@@ -53,7 +53,7 @@ body {
 }
 
 .hero {
-	height: 20rem;
+	height: 15rem;
 	background-size: cover;
 	background-position: center center;
 }
@@ -81,6 +81,11 @@ body {
 	.footerLegales {
 		border-top: none;
 		border-inline-start: 1px solid var(--alfgow);
+	}
+	.hero {
+		height: 25rem;
+		background-size: cover;
+		background-position: center center;
 	}
 }
 
