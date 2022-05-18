@@ -19,8 +19,15 @@ body {
 	border: 1px solid red;
 }
 
-.footer {
+.footer,
+.footerContacto,
+.footerLegales {
 	border-top: 1px solid var(--alfgow);
+}
+
+.footerCopy {
+	background-color: var(--alfgow);
+	font-weight: bold;
 }
 
 .bfooter {
@@ -70,7 +77,18 @@ body {
 	color: var(--alfgow) !important;
 }
 
+@media (min-width: 768px) {
+	.footerLegales {
+		border-top: none;
+		border-inline-start: 1px solid var(--alfgow);
+	}
+}
+
 @media (min-width: 960px) {
+	.footerContacto {
+		border-top: none;
+		border-inline-start: 1px solid var(--alfgow);
+	}
 	h1 {
 		font-size: 5rem;
 	}
