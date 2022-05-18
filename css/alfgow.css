@@ -23,6 +23,10 @@ body {
 	border-top: 1px solid var(--alfgow);
 }
 
+.bfooter {
+	border-inline-end: 1px solid var(--alfgow);
+}
+
 .logo {
 	/* border: 1px solid var(--alfgow); */
 	border-radius: 50px;
