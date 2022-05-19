@@ -51,47 +51,102 @@
 
     <section class="container-xl pt-5 text-center">
         <h1>Inmobiliaria en CDMX</h1>
+
+
         <h3>Aquí te presentamos algunos inmuebles destacados</h3>
         <i class="bi bi-arrow-down-circle display-3 flecha"></i>
         <div class="row pt-3">
 
+<?php
+$url = 'https://api.easybroker.com/v1/properties?search%5Bstatuses%5D%5B%5D=published';
+$curl = curl_init();
+// OPTIONS:
+curl_setopt($curl, CURLOPT_URL, $url);
+curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+    'X-Authorization: vc7t7o5uopriecledy5mrsd7qb3nml',
+));
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($curl, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+// EXECUTE:
+$uno = curl_exec($curl);
+//Desmarañando
+$resultado = json_decode($uno, true);
+$entrando = $resultado["content"];
 
+foreach ($entrando as $propiedades) {
+
+    $id = $propiedades['public_id'];
+
+    $op = $propiedades['operations'];
+    $op2 = $op['0'];
+
+    $tipooperacion = '';
+    if ($op2['type'] === 'sale') {
+        $tipooperacion = 'Venta';
+    } elseif ($op2['type'] === 'rental') {
+        $tipooperacion = 'Renta';
+    }
+
+    $url2 = "https://api.easybroker.com/v1/properties/" . $id;
+    $curl2 = curl_init();
+    // OPTIONS:
+    curl_setopt($curl2, CURLOPT_URL, $url2);
+    curl_setopt($curl2, CURLOPT_HTTPHEADER, array(
+        'X-Authorization: vc7t7o5uopriecledy5mrsd7qb3nml',
+    ));
+    curl_setopt($curl2, CURLOPT_RETURNTRANSFER, 1);
+    curl_setopt($curl2, CURLOPT_HTTPAUTH, CURLAUTH_BASIC);
+    // EXECUTE:
+    $dos = curl_exec($curl2);
+    //Desmarañando
+    $resultadoindividual = json_decode($dos, true);
+    $tag = $resultadoindividual['tags'];
+    $tagprincipal = $tag[0];
+
+    $operacion = $resultadoindividual["operations"][0]["type"];
+
+    if ($tagprincipal === 'Destacado') {?>
+
+      <!-- //print("<pre>".print_r($resultadoindividual,true)."</pre>"); -->
+
+             <!-- <?php echo '<pre>' . var_dump($resultadoindividual["operations"]) . '</pre>' ?> -->
 
             <div class="col-md-4 propiedadDestacada">
                 <div class="overflow-hidden">
                     <img class="img-fluid"
-                        src="https://assets.easybroker.com/property_images/2940501/46731433/EB-KH0501.jpg?version=1651347027"
+                        src="<?php echo $resultadoindividual["property_images"][0]["url"] ?>"
                         alt="Categoria 2">
                 </div>
-                <p class="text-decoration-none text-dark fs-2 d-block text-center py-3" href=" #"><button
-                        class="btn btn-success fs-5" disabled="disabled">Renta</button>
-                    Colonia: Juárez,
-                    Cuauhtémoc, Ciudad de México <span class="text-danger">$16,000 MXN</span> </p>
+                <p class="text-decoration-none text-dark fs-2 d-block text-center py-3" href=" #">
+                    <button class="btn btn-success fs-5" disabled="disabled">
+                        <?php
+if ($operacion === 'rental') {
+        echo 'Renta';
+    } else {
+        echo 'Venta';
+    }
+        ?>
+                    </button>
+
+                         Colonia: <?php echo $resultadoindividual["location"]["name"] ?>
+  <span class="text-danger"><?php echo $resultadoindividual["operations"][0]["formatted_amount"] ?> <?php echo $resultadoindividual["operations"][0]["currency"] ?>
+
+</span>
+                    </p>
+
             </div>
 
-            <div class="col-md-4 propiedadDestacada">
-                <div class="overflow-hidden">
-                    <img class="img-fluid"
-                        src="https://assets.easybroker.com/property_images/2876698/45609311/EB-KA6698.jpg?version=1648578811"
-                        alt="Categoria 2">
-                </div>
-                <p class="text-decoration-none text-dark fs-2 d-block text-center py-3" href=" #"><button
-                        class="btn btn-success fs-5" disabled="disabled">Renta</button>
-                    Colonia: Del Valle
-                    Centro, Benito Juárez, Ciudad de México <span class="text-danger">$14,000 MXN</span> </p>
-            </div>
 
-            <div class="col-md-4 propiedadDestacada">
-                <div class="overflow-hidden">
-                    <img class="img-fluid"
-                        src="https://assets.easybroker.com/property_images/2939029/46705413/EB-KG9029.jpg?version=1651257579"
-                        alt="Categoria 2">
-                </div>
-                <p class="text-decoration-none text-dark fs-2 d-block text-center py-3" href=" #"><button
-                        class="btn btn-success fs-5" disabled="disabled">Renta</button>
-                    Colonia: Roma Norte,
-                    Cuauhtémoc, Ciudad de México <span class="text-danger">$40,000 MXN</span> </p>
-            </div>
+
+      <?php }
+
+    // print("<pre>".print_r($tag,true)."</pre>");
+
+}
+
+?>
+
+
 
 
 
@@ -162,5 +217,6 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 <script src="./js/index.js"></script>
+<script src="./js/app.js"></script>
 
 </html>
